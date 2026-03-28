@@ -14,7 +14,7 @@ def generate_image(prompt: str) -> str:
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         logger.error("OPENAI_API_KEY environment variable is missing.")
-        return "https://placehold.co/1024x1024/EEE/31343C?text=API+Key+Missing"
+        raise ValueError("OPENAI_API_KEY environment variable is missing.")
         
     try:
         client = OpenAI(api_key=api_key)
@@ -51,5 +51,4 @@ def generate_image(prompt: str) -> str:
         return f"generated_images/{filename}"
     except Exception as e:
         logger.error(f"Error generating image with OpenAI: {e}")
-        # Return fallback error placeholder
-        return "https://placehold.co/1024x1024/EEE/31343C?text=Image+Generation+Failed"
+        raise e
