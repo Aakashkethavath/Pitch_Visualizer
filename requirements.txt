@@ -1,0 +1,7 @@
+flask
+nltk
+python-dotenv
+openai
+requests
+pillow
+google-generativeai
